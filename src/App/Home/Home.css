@@ -1,0 +1,55 @@
+.title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    font-family: 'Rammetto One', cursive;
+    max-width: 90%;
+}
+
+.page-wrapper {
+    min-height: 400px;
+    background-color: rgb(54, 54, 129);
+    display: flex;
+    align-items: center;
+}
+
+.letter-box {
+    border-radius: 65px;
+    border: 2px solid rgb(54, 54, 129);
+    height: 130px;
+    width: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.letter{
+    font-size: 80px;
+    color: white;
+}
+
+.t {
+    background-color: rgb(110, 108, 243);
+}
+
+.r {
+    background-color: cyan;
+}
+
+.i {
+    background-color: #fc52f3;
+}
+
+.v {
+    background-color: lime;
+}
+
+.ia {
+    background-color: #f8b524;
+}
+
+.a {
+    background-color: rgb(173, 122, 255);
+}

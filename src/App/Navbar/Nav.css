@@ -1,0 +1,40 @@
+
+.nav {
+    display: flex;
+    justify-content: space-around;
+    background-color: rgb(58, 60, 61);
+    font-size: 22px;
+    padding: 2%;
+    align-items: center;
+    font-weight: 700;
+    margin-bottom: 2%;
+}
+
+.nav a:active {
+    background-color: whitesmoke;
+    color: rgb(54, 54, 129);
+}
+
+/* .nav-links {
+    list-style: none;
+    padding: 20px;
+    float: left;
+} */
+
+.cat-link {
+    color: rgb(33, 226, 252);
+}
+
+@media only screen and (max-width: 770px) {
+    .nav {
+        flex-direction: column;
+    }
+
+    .nav > li {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+
+
