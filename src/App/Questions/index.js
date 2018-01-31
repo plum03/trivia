@@ -46,10 +46,9 @@ class Questions extends Component {
             backgroundColor: "azure",
             fontSize: "22px"
         }
-
+        
         let {loading, data} = this.props.questions;
         // console.log(this.props) const myQ = questions.questions 
-        console.log(this.props.questions.data)
         const questionList = data.map((question, i) => {
             let {categoryId} = this.props.match.params;
             return <Link key={question.id} to={`/${categoryId}/${question.id}`}>{question.question}</Link>
@@ -87,7 +86,7 @@ class Questions extends Component {
                 </div>
             : <div className="main-wrapper">
                 <div >
-                   
+                   <h1>{this.props.questions.data[0].category.name}</h1>
                     <div className="list-wrapper">{questionList}</div>
                     {/* {this.state.showSmall && <select className="answer-dropdown" onChange={this.handleChange}>
                         {questionList2}

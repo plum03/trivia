@@ -10,9 +10,9 @@
     margin-bottom: 2%;
 }
 
-.nav a:active {
+.cat-link:hover, .cat-link:focus, .cat-link::selection{
     background-color: whitesmoke;
-    color: rgb(54, 54, 129);
+    color: rgb(238, 80, 225);
 }
 
 /* .nav-links {

@@ -2,6 +2,7 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import "./Nav.css"
 import {Nav, Navbar, NavItem} from "react-bootstrap"
+import {LinkContainer} from "react-router-bootstrap"
 
 function myNavbar() {
 
@@ -62,13 +63,11 @@ function myNavbar() {
             <div className="nav">
                 {categories.map((category, i) => {
                     return (
-                        <NavItem eventKey={i}>
                             <Link
                                 to={`/${category.id}`}
                                 key={category.id}
                                 className="cat-link"
                                 style={linkStyle}>{category.name}</Link>
-                        </NavItem>
                     )
                 })}
             </div>
