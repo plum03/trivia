@@ -31,7 +31,8 @@ Questions List view
 ![App Screenshot](public/images/app-full-screen.png)
 
 Small screen view
-<img src="public/images/app-small.png" width="250px">
+
+<img src="public/images/app-small.png" width="500px">
 
 
 ```
