@@ -1,8 +1,4 @@
-# My First React/Redux App
-
-I've just started learning JavaScript and, a few weeks ago, was introduced to the React and Redux frameworks.  I've read that React, and especially Redux, can be kind of tricky for beginners but I was really excited to learn.  I figured the best way to get comfortable with these tools was to just start coding and see what happens!
-
-## About
+# Trivia App
 
 This single page application lets you to test your knowledge of various trivia, organized by category.
 
@@ -15,6 +11,7 @@ Click on the answer(s) and a message will display letting you know whether it wa
 When you are ready to move on, just select another question from the list, or click on a new category to see different questions.
 
 Note: Do you like to multitask?  Me too!  Which is why I've implemented responsive design tactics.  So shrink the page down and keep on playing.  (If you answered no, that's okay too.  Expand the page to it's full width and enjoy!)
+
 
 ## Built With
 
