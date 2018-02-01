@@ -22,15 +22,15 @@ Note: Do you like to multitask?  Me too!  Which is why I've implemented responsi
 * Javascript, HTML, CSS - for your enjoyment 
 
 
-### Screenshots
+## Screenshots
 
-Initial view 
+### Initial view 
 ![Homepage Screenshot](public/images/main-full-screen.png)
 
-Questions List view
+### Questions List view
 ![App Screenshot](public/images/app-full-screen.png)
 
-Small screen view
+### Small screen view
 
 <img src="public/images/app-small.png" width="500px">
 
