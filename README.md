@@ -25,13 +25,13 @@ Note: Do you like to multitask?  Me too!  Which is why I've implemented responsi
 ### Screenshots
 
 Initial view 
-![Homepage Screenshot](public/images/main-full-screen)
+![Homepage Screenshot](public/images/main-full-screen.png)
 
 Questions List view
-![App Screenshot](public/images/app-full-screen)
+![App Screenshot](public/images/app-full-screen.png)
 
 Small screen view
-![App Screenshot - small screen](public/images/app-small)
+![App Screenshot - small screen](public/images/app-small.png)
 
 
 ```
