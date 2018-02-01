@@ -31,7 +31,7 @@ Questions List view
 ![App Screenshot](public/images/app-full-screen.png)
 
 Small screen view
-![App Screenshot - small screen](public/images/app-small.png|width=250)
+![App Screenshot - small screen](public/images/app-small.png =250x)
 
 
 ```
