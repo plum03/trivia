@@ -102,8 +102,8 @@ class Question extends Component {
 
 ## Features for Future Versions
 
-Point-tracking system
-Users can query the API for more categories
+[1] Point-tracking system
+[2] Users can query the API for more categories
 
 
 ## Author
