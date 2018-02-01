@@ -15,10 +15,12 @@ Note: Do you like to multitask?  Me too!  Which is why I've implemented responsi
 
 ## Built With
 
-* [React](https://reactjs.org/) - The web framework used
+* [ReactJS](https://reactjs.org/) - The web framework used
 * [Redux](https://redux.js.org/) - State Management
 * [Qriusity](https://qriusity.com/) - Trivia API
-* [Axios](https://github.com/axios/axios) - GET request for trivia 
+* [Axios](https://github.com/axios/axios) - enables AJAX
+* React-Router - enables SPA design
+* Redux Thunk - permits asynchronous action calls
 * Javascript, HTML, CSS - for your enjoyment 
 
 
@@ -35,15 +37,74 @@ Note: Do you like to multitask?  Me too!  Which is why I've implemented responsi
 <img src="public/images/app-small.png" width="500px">
 
 
-```
-Give the example
-```
+## Code Examples
 
-And repeat
+Using Redux, the app is able to retrieve questions corresponding to each category clicked on by the user and loads the data into the global store.
 
 ```
-until finished
+export function getQuestions(catId) {
+    return dispatch => {
+        axios
+            .get(rootUrl + catId + questUrl)
+            .then((response) => {
+                dispatch({type: "GET_QUESTIONS", questions: response.data})
+            })
+    } 
+}
+
+export default function questReducer(questions = {loading: true, data: []}, action) {
+    switch (action.type) {
+        case "GET_QUESTIONS":
+            return {
+                loading: false,
+                data: action.questions
+            }
+        default:
+            return questions
+    }
+}
+
 ```
+
+I used ReactJS to handle the state changes for the Question component.  This allows a message to display letting the user know whether the selected answer is correct or not.  State changes also determine the color of the message and clear the message when a new question is selected.
+
+```
+class Question extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            alertMsg: "",
+            color: "crimson"
+        }
+        this.handleClick = this.handleClick.bind(this)
+    }
+
+    handleClick(e) {
+        let { value } = e.target
+        let {questionId} = this.props.match.params;
+        let currentQ = this.props.data.filter((question) => question.id.toString() === questionId)[0];
+
+        this.setState(() => {
+            return {
+                alertMsg: currentQ.answers.toString() === value ? "Correct" : "Try again",
+                color: currentQ.answers.toString() === value ? "lime" : "crimson",
+            } 
+        })      
+    }
+
+    componentWillReceiveProps() {
+        this.setState ({
+            alertMsg: ""
+        })
+    }
+
+```
+
+## Features for Future Versions
+
+Point-tracking system
+Users can query the API for more categories
+
 
 ## Author
 

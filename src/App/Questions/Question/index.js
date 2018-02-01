@@ -20,7 +20,6 @@ class Question extends Component {
 
         this.setState(() => {
             return {
-                // toggleAlert: currentQ.answers.toString() === value ? true : false,
                 alertMsg: currentQ.answers.toString() === value ? "Correct" : "Try again",
                 color: currentQ.answers.toString() === value ? "lime" : "crimson",
             } 
