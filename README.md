@@ -25,15 +25,17 @@ Note: Do you like to multitask?  Me too!  Which is why I've implemented responsi
 * Javascript, HTML, CSS - for your enjoyment 
 
 
-```
-Give examples
-```
-
 ### Screenshots
 
-A step by step series of examples that tell you have to get a development env running
+Initial view 
+![Homepage Screenshot](public/images/main-full-screen)
 
-Say what the step will be
+Questions List view
+![App Screenshot](public/images/app-full-screen)
+
+Small screen view
+![App Screenshot - small screen](public/images/app-small)
+
 
 ```
 Give the example
@@ -44,38 +46,6 @@ And repeat
 ```
 until finished
 ```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
 
 ## Author
 
