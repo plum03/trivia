@@ -113,6 +113,6 @@ class Question extends Component {
 
 ## Acknowledgments
 
-* Hat tip to the creators of Qriusity for this API and for making the documentation so easy to follow!
+* Hat tip to the creators of Qriusity for the API and user-friendly documentation!
 
 
