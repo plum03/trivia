@@ -10,6 +10,9 @@ export function getQuestions(catId) {
             .then((response) => {
                 dispatch({type: "GET_QUESTIONS", questions: response.data})
             })
+            .catch((err) => {
+                console.log(err);
+            })
     } 
 }
 
