@@ -21,6 +21,7 @@ function App(props) {
             <Switch>
                 <Route exact path ="/" component={Home} />
                 <Route path="/:categoryId" component={Questions} />
+                <Route path="/player"
             </Switch>
            
         </div>

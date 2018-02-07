@@ -1,5 +1,5 @@
 {
-  "name": "trivia",
+  "name": "server",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -11,7 +11,7 @@
     "url": "git+https://github.com/plum03/trivia.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "plum03",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/plum03/trivia/issues"
@@ -21,6 +21,7 @@
     "body-parser": "^1.18.2",
     "dotenv": "^5.0.0",
     "express": "^4.16.2",
-    "mongoose": "^5.0.3"
+    "mongoose": "^5.0.3",
+    "nodemon": "^1.14.12"
   }
 }
