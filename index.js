@@ -2,20 +2,23 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 
-const config = require('./config')
-const port = config.port || 5000
+const playerRoute = require('./routes/player')
 
-// const playerRoute = require('./routes/')
+const config = require('./config')
+// const port = config.port || 5000
+
 const app = express()
 
+// middleware
 app.use(bodyParser.json())
 
-// app.use("/player", require('playerRoute'))
+// routes
+app.use("/player", playerRoute)
 
-mongoose.connect('mongodb://localhost/trivia', () => {
+mongoose.connect('mongodb://localhost:27017/trivia', () => {
     console.log('MongoDB is connected')
 })
 
-app.listen(port, () => {
-    console.log("Listening on port " +port)
+app.listen(config.port, () => {
+    console.log("Listening on port " +config.port)
 })

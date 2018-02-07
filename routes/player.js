@@ -1,6 +1,7 @@
 const express = require('express')
 const playerRoute = express.Router()
 
+
 const Player = require('../models/player')
 
 // retrieve ALL players, I will use this to ensure no repeat username with addPlayer()
@@ -16,7 +17,7 @@ playerRoute.post("/", (req, res) => {
     const newPlayer = new Player(req.body)
     newPlayer.save((err) => {
         if (err) return res.status(500).send(err)
-        return res.send("Your account was successfully created.  Happy Playing!")
+        return res.send("Account created.  Happy Playing! \n" + newPlayer)
     })
 })
 
@@ -43,3 +44,5 @@ playerRoute.delete("/:id", (req, res) => {
         return res.send('Thank you.  Your request was recieved and your account has been deleted')
     })
 })
+
+module.exports = playerRoute
