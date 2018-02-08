@@ -61,6 +61,7 @@ class Form extends Component {
                 <h2>Profile</h2>
                 <form onSubmit={this.handleSubmit}>
                     <input onChange={this.handleChange} type="text" name="name" value={name} placeholder="Issue Name" />
+                    <input type="password" onChange={this.handleChange}/>
                     <button >SAVE</button>
                 </form>
             </div>
