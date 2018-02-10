@@ -1,38 +1,41 @@
-import axios from 'axios'
+import axios from 'axios';
+import {login} from '../redux/authorization'
+
+
+axios.interceptors.request.use((config) => {
+    const token = localStorage.getItem("token");
+    config.headers.Authorization = `Bearer ${token}`;
+    return config
+})
+
 const url = "/player/"
 
-export function getPlayers() {
+export function verifyPlayer () {
     return (dispatch) => {
-        axios
-        .get(url)
+        axios.get(url + "verify")
         .then((response) => {
-            dispatch({
-                type: "GET_PLAYERS",
-                players: response.data
-            })
+            let {success, player } = response.data
+            dispatch(login(player, success))
         })
-        .catch(err => {
+        .catch ((err) => {
             console.error(err)
         })
+    } 
+}
+
+export function addPoint(player) {
+    return dispatch => {
+        axios   
+            .put(url, player)
+            .then(response => {
+                dispatch({
+                    type: "ADD_POINT",
+                    player: response.data
+                })
+            })
     }
 }
 
-export function addPlayer() {
-    return (dispatch) => {
-        axios
-        .get(url)
-        .then((response) => {
-            dispatch({
-                type: "ADD_PLAYER",
-                newIssue: response.data
-            })
-        })
-        .catch(err => {
-            console.error(err)
-        })
-    }
-}
 
-export function login (user) {
-    
-}
+// /api/player/totalAttempts
+// /api/player/totaPoints

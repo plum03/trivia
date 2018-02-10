@@ -1,46 +1,72 @@
 const express = require('express')
-const playerRoute = express.Router()
-
+const playerRoute = express.Router();
+const expressJwt = require("express-jwt");
 
 const Player = require('../models/player')
 
-// retrieve ALL players, I will use this to ensure no repeat username with addPlayer()
-playerRoute.get("/", (req, res) => {
-    Player.find((err, players) => {
-        if (err) return res.status(500).send(err)
-        return res.send(players)
-    })
-})
 
-// add new player to db
-playerRoute.post("/", (req, res) => {
-    const newPlayer = new Player(req.body)
-    newPlayer.save((err) => {
-        if (err) return res.status(500).send(err)
-        return res.send("Account created.  Happy Playing! \n" + newPlayer)
+playerRoute.use(expressJwt({secret: process.env.SECRET}))
+
+playerRoute.route("/verify")
+    .get((req, res) => {
+        Player.findById(req.user._id, (err, player) => {
+            if (err) {
+                res.status(500).send({success: false, err})
+            } else if (player === null) {
+                res.status(400).send({success: false, err})
+            } else {
+                res.status(200).send({success: true, player: player.withoutPassword()})
+            }
+        })
     })
-})
 
 // retrieve ONE player, for player stats page
-playerRoute.get("/:id", (req, res) => {
-    Player.findById(req.params.id, (err, player) => {
-        if (err) return res.status(500).send(err)
-        return res.send(player)
-    })
+// playerRoute.get("/:id", (req, res) => {
+//     Player.findById(req.params.id, (err, player) => {
+//         if (err) 
+//             return res.status(500).send(err)
+//         return res.send(player)
+//     })
+// })
+
+// get ONE player (w/ token thru api/player route)
+playerRoute.route("/")
+.get((req, res) => {
+    Player.findById(req.user._id, (err, player) => {
+        if (err) return res.status(500).send(err);
+        return res.status(200).send(player);
+    });
 })
 
 // edit player info
-playerRoute.put("/:id", (req, res) => {
-    Player.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatedPlayer) => {
-        if (err) return res.status(500).send(err)
-        return res.send(updatedPlayer)
+playerRoute.put("/", (req, res) => {
+    Player.findByIdAndUpdate(req.user._id, req.body, {
+        new: true
+    }, (err, updatedPlayer) => {
+        if (err) 
+            return res.status(500).send(err)
+        return res.send(updatedPlayer);
     })
-})
+});
+
+playerRoute.put("/:increment", (req, res) => {
+    Player.findById(req.user._id, (err, player) => {
+        if (err) 
+            return res.status(500).send(err)
+        player[req.params.increment]++;
+        player.save(err => {
+            if (err) 
+                return res.status(500).send(err)
+            return res.send(player);
+        });
+    });
+});
 
 // delete player account
 playerRoute.delete("/:id", (req, res) => {
     Player.findByIdAndRemove(req.params.id, (err, deletedPlayer) => {
-        if (err) return res.status(500).send(err)
+        if (err) 
+            return res.status(500).send(err)
         return res.send('Thank you.  Your request was recieved and your account has been deleted')
     })
 })

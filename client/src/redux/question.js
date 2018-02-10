@@ -1,11 +1,12 @@
-import axios from 'axios'
+import axios from 'axios';
+let questionRequester = axios.create();
 
 const rootUrl = "https://qriusity.com/v1/categories/"
 const questUrl = "/questions"
 
 export function getQuestions(catId) {
     return dispatch => {
-        axios
+        questionRequester
             .get(rootUrl + catId + questUrl)
             .then((response) => {
                 dispatch({

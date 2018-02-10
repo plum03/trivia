@@ -22,16 +22,8 @@ const PlayerSchema = new Schema ({
     totalAttempts: {
         type: Number,
         default: 0
-    },
-    scorePerct: {
-        type: Number,
-        default: 0
-    },
-    playerRank: {
-        type: Number,
-        default: null
     }
-})
+}, {timestamps: {createdAt: 'created_at'}})
 
 PlayerSchema.pre('save', function(next) {
     var user = this
@@ -54,6 +46,12 @@ PlayerSchema.methods.comparePassword = function (candidatePassword, cb)  {
         if (err) return cb(err)
         cb(null, isMatch)
     })
+}
+
+PlayerSchema.methods.withoutPassword = function() {
+    const player = this.toObject();
+    delete player.password;
+    return player;
 }
 
 module.exports = mongoose.model("Player", PlayerSchema)

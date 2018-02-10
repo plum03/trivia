@@ -1,11 +1,16 @@
 import {createStore, combineReducers, applyMiddleware} from 'redux'
 import thunk from 'redux-thunk'
+import player from "./authorization";
 
 
 import questions from './question'
 
+console.log(player);
+const rootReducer = combineReducers({ 
+    questions,
+    player
 
-const rootReducer = combineReducers({ questions })
+ })
 
 
 export default createStore(

@@ -9,10 +9,6 @@ import './Questions.css'
 import {getQuestions} from '../../redux/question'
 
 class Questions extends Component {
-    constructor() {
-        super();
-       
-    }
 
     componentDidMount() {
         let catId = this.props.match.params.categoryId;

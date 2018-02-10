@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
-
 import './Question.css'
+import { editPlayer } from '../../../redux/authorization';
 
 class Question extends Component {
     constructor(props) {
@@ -17,6 +17,11 @@ class Question extends Component {
         let { value } = e.target
         let {questionId} = this.props.match.params;
         let currentQ = this.props.data.filter((question) => question.id.toString() === questionId)[0];
+
+        //handle question checking logic here and send a put request to the player route
+        if (currentQ.answers.toString() === value) {
+        
+        }
 
         this.setState(() => {
             return {
@@ -38,7 +43,6 @@ class Question extends Component {
         let {questionId} = this.props.match.params;
         let currentQ = data.filter((question) => question.id.toString() === questionId)[0];
         console.log(currentQ.answers)
-        console.log(this.state)
 
         return (loading
             ? <div>
