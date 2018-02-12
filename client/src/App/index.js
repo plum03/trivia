@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 
 import Categories from './Categories' 
 import Questions from './Questions'
-import Question from './Questions/Question'
+// import Question from './Questions/Question'
 import Home from './Home'
 import Nav from "./Nav"
 import PlayerProfile from "./PlayerProfile"
@@ -22,9 +22,9 @@ class App extends Component {
     }
 
     componentDidMount() {
-        // this.props.verifyPlayer()
+        this.props.verifyPlayer()
         // console.log(this.props)
-        console.log("hi")
+       
     }
 
     
@@ -33,28 +33,33 @@ class App extends Component {
         let style = {
             fontFamily: "Quicksand"
         }
-        let {isAuthenticated} = this.props.player.isAuthenticated
-        console.log(this.props.player)
+        const {isAuthenticated} = this.props.player.isAuthenticated
+
         return (
             <div className='app-wrapper' style={style}>
                 <Nav/>
                 <Categories />
                 <Switch>
-                    <Route exact path ="/" render={(props) => {
+                    <Route exact path ="/" component={Home} />
+                    {/* render={(props) => {
                         return isAuthenticated ?
                         <Redirect to="/profile" />
                         :
                         <Home {...props} />
-                    }}  />
-                    <Route path="/signup" render={(props) => {
+                    }}  /> */}
+                    <Route path="/login" render={(props) => {
                         return isAuthenticated ?
-                        <Redirect to="/profile" />
+                        <Redirect to="/player" />
                         :
-                        <Home {...props} />
+                        <LogIn {...props} />
                     }} />
-                    <ProtectedPath path="/profile" component={PlayerProfile} />
+                    <ProtectedPath path="/player" component={PlayerProfile} />
+                    {/* <Route component={ProtectedPath}>
+                        <Route path='/player' component={PlayerProfile}/>
+                    </Route> */}
+                    
                     <Route path='/signup' component={SignUp}/>
-                    {/* <Route path='/login' component={LogIn}/> */}
+                    <Route path='/login' component={LogIn}/>
                     <Route path="/:categoryId" component={Questions} />
                 </Switch>
                

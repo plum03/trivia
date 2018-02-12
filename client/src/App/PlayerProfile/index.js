@@ -6,8 +6,6 @@ class PlayerProfile extends Component {
 
     componentDidMount () {
        
-        console.log(this.props)
-        console.log("hi there player!")
     }
 
 
@@ -16,7 +14,7 @@ class PlayerProfile extends Component {
         return (
             <div>
                 Player Stats ...
-                <h1>Welcome {this.props.player.username}</h1>
+                <h1>Welcome </h1>
             </div>
         )
     }

@@ -57,6 +57,18 @@ export function logout(history) {
     return {type: "LOGOUT"}
 }
 
+// const getURL = (data) => (dispatch, getState) => {
+//     dispatch({
+//         type: "GET_URL",
+//         pathname: getState().router.pathname
+//     })
+// }
+
+// export const setPathToAction = store => next => action => {
+//     action.pathname = store.getState().router.pathname
+//     next(action)
+// }
+
 //get player edit player
 export function editPlayer(data) {
     //make the put request, dispatches the action containing new player object
@@ -67,6 +79,19 @@ export function editPlayer(data) {
                 console.log(response.data)
             })
     }
+}
+
+export function verifyPlayer () {
+    return (dispatch) => {
+        axios.get(playerUrl + "verify")
+        .then((response) => {
+            let {success, player } = response.data
+            dispatch(login(player, success))
+        })
+        .catch ((err) => {
+            console.error(err)
+        })
+    } 
 }
 
 export default function authReducer(player = {

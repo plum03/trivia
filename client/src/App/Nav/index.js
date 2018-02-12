@@ -10,7 +10,6 @@ class Nav extends Component {
             inputs: 
                 {username: "",
                 password: ""}
-            
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -36,21 +35,18 @@ class Nav extends Component {
         this.props.login(this.state)
         this.clearInputs()
     }
-
    
 
-
     render() {
+        const isAuthenticated = this.props.player.isAuthenticated;
+        console.log(isAuthenticated)
         return (
-            <div>
+            <div className="nav-wrapper" >
                 <Link to="/">Home</Link>
-            <form onSubmit={this.handleSubmit}>
-                <input onChange={this.handleChange} type="text" name="username"  value={this.state.username} placeholder="username" />
-                <input type="password" name="password" onChange={this.handleChange} value={this.state.password} placeholder="password"/>
-                <button >Log In</button>
-            </form>
-            <button>Sign Up</button>
-            <button onClick={this.props.logout}>Log Out</button>
+                {isAuthenticated ? null : <div><Link to="/signup">Sign Up</Link></div>}
+                {isAuthenticated ? null : <div><Link to="/login">Log In</Link></div>}
+                {isAuthenticated ? <div><Link to="/player">Profile</Link></div> : null}
+                {isAuthenticated ? <div><button onClick={this.props.logout}>Log Out</button></div> : null}
             </div>
         )
     }
@@ -60,4 +56,4 @@ function mapStateToProps(state) {
     return state
 }
 
-export default connect(mapStateToProps, {login, logout, signup})(Nav)
+export default connect(mapStateToProps, {logout})(Nav)
