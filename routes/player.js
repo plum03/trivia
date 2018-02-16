@@ -20,14 +20,6 @@ playerRoute.route("/verify")
         })
     })
 
-// retrieve ONE player, for player stats page
-// playerRoute.get("/:id", (req, res) => {
-//     Player.findById(req.params.id, (err, player) => {
-//         if (err) 
-//             return res.status(500).send(err)
-//         return res.send(player)
-//     })
-// })
 
 // get ONE player (w/ token thru api/player route)
 playerRoute.route("/")
@@ -63,8 +55,8 @@ playerRoute.put("/:increment", (req, res) => {
 });
 
 // delete player account
-playerRoute.delete("/:id", (req, res) => {
-    Player.findByIdAndRemove(req.params.id, (err, deletedPlayer) => {
+playerRoute.delete("/", (req, res) => {
+    Player.findByIdAndRemove(req.user._id, (err, deletedPlayer) => {
         if (err) 
             return res.status(500).send(err)
         return res.send('Thank you.  Your request was recieved and your account has been deleted')

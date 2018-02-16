@@ -48,7 +48,7 @@ PlayerSchema.methods.comparePassword = function (candidatePassword, cb)  {
     })
 }
 
-PlayerSchema.methods.withoutPassword = function() {
+PlayerSchema.methods.deletePassword = function() {
     const player = this.toObject();
     delete player.password;
     return player;

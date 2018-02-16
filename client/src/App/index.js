@@ -12,6 +12,7 @@ import SignUp from './SignUp'
 import LogIn from './LogIn'
 import ProtectedPath from './ProtectedPath'
 import {verifyPlayer} from '../redux/player'
+import EditPlayer from './EditPlayer/editForm'
 
 
 
@@ -22,9 +23,7 @@ class App extends Component {
     }
 
     componentDidMount() {
-        this.props.verifyPlayer()
-        // console.log(this.props)
-       
+        this.props.verifyPlayer()       
     }
 
     
@@ -41,22 +40,16 @@ class App extends Component {
                 <Categories />
                 <Switch>
                     <Route exact path ="/" component={Home} />
-                    {/* render={(props) => {
-                        return isAuthenticated ?
-                        <Redirect to="/profile" />
-                        :
-                        <Home {...props} />
-                    }}  /> */}
+
                     <Route path="/login" render={(props) => {
                         return isAuthenticated ?
                         <Redirect to="/player" />
                         :
                         <LogIn {...props} />
                     }} />
+                    
                     <ProtectedPath path="/player" component={PlayerProfile} />
-                    {/* <Route component={ProtectedPath}>
-                        <Route path='/player' component={PlayerProfile}/>
-                    </Route> */}
+                    <ProtectedPath path="/edit" component={EditPlayer} />
                     
                     <Route path='/signup' component={SignUp}/>
                     <Route path='/login' component={LogIn}/>

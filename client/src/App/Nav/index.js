@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import {login, logout, signup} from "../../redux/authorization"
 import {connect} from "react-redux"
 import {Link} from "react-router-dom"
-
+import player from '../Home/'
 class Nav extends Component {
     constructor(props) {
         super(props)
@@ -38,10 +38,14 @@ class Nav extends Component {
    
 
     render() {
+        const styles = {
+            fontSize: "18px"
+                }
+
         const isAuthenticated = this.props.player.isAuthenticated;
         console.log(isAuthenticated)
         return (
-            <div className="nav-wrapper" >
+            <div className="nav-wrapper" style={styles}>
                 <Link to="/">Home</Link>
                 {isAuthenticated ? null : <div><Link to="/signup">Sign Up</Link></div>}
                 {isAuthenticated ? null : <div><Link to="/login">Log In</Link></div>}

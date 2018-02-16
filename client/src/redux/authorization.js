@@ -41,9 +41,7 @@ export function login(player, success) {
             .then(response => {
                 let { token, success, player } = response.data
                 localStorage.setItem("token", token)
-                console.log(response.data)
                 dispatch({type: "LOGIN", 
-                // data: response.data
                 player,
                 success
             })
@@ -57,29 +55,6 @@ export function logout(history) {
     return {type: "LOGOUT"}
 }
 
-// const getURL = (data) => (dispatch, getState) => {
-//     dispatch({
-//         type: "GET_URL",
-//         pathname: getState().router.pathname
-//     })
-// }
-
-// export const setPathToAction = store => next => action => {
-//     action.pathname = store.getState().router.pathname
-//     next(action)
-// }
-
-//get player edit player
-export function editPlayer(data) {
-    //make the put request, dispatches the action containing new player object
-    return dispatch => {
-        axios
-            .put(playerUrl, data)
-            .then(response => {
-                console.log(response.data)
-            })
-    }
-}
 
 export function verifyPlayer () {
     return (dispatch) => {
@@ -110,7 +85,11 @@ export default function authReducer(player = {
                 isAuthenticated: action.success
             }
         case "LOGOUT":
-            return player
+            return {
+                loading: false,
+                data: {},
+                isAuthenticated: false
+            }
             // get player case edit player case
         default:
             return player

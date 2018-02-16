@@ -24,7 +24,7 @@ authRoutes.post("/login", (req, res) => {
             player.comparePassword(req.body.password, (err, match) => {
                 if (err) res.status(403).send(err);
                 if (!match) res.status(403).send({err: "Username or password is incorrect."})
-                const token = jwt.sign(player.withoutPassword(), process.env.SECRET);
+                const token = jwt.sign(player.deletePassword(), process.env.SECRET);
                 return res.send({success: true, token, player})
             })
         }

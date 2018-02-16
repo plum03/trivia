@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
-import {login} from '../../redux/authorization'
+import {editPlayer} from '../../redux/player'
 
 
-class LogIn extends Component {
+class EditPlayer extends Component {
     constructor(props) {
         super(props)
+        console.log(props)
         this.state = {
             inputs: {
                 username: "",
@@ -19,6 +20,7 @@ class LogIn extends Component {
 
     handleChange(e) {
         let {name, value} = e.target
+        console.log(this.props)
        this.setState((prevState) => {
            return {
                inputs: {
@@ -29,6 +31,14 @@ class LogIn extends Component {
        })
     }
 
+    handleSubmit(e) {
+        e.preventDefault()
+        console.log(this.props)
+        console.log(this.props.player)
+        this.props.editPlayer(this.state.inputs)
+        this.clearInputs()
+    }
+
     clearInputs() {
         this.setState({
             inputs: {
@@ -37,19 +47,6 @@ class LogIn extends Component {
             }
         })
     }
-
-    handleSubmit(e) {
-        e.preventDefault()
-        this.props.login(this.state.inputs)
-        this.clearInputs()
-    }
-
-    // componentWillReceiveProps(nextProps) {
-    //     console.log(this.props)
-    //     console.log(this.nextProps)
-    //     if (this.props !== this.nextProps)
-    // }
-    
     render() {
         let {username, password} = this.state.inputs
         return (
@@ -57,11 +54,11 @@ class LogIn extends Component {
                 <form onSubmit={this.handleSubmit}>
                     <input type="text" name="username" value = {username} placeholder="username" onChange= {this.handleChange}/>
                     <input type="password" name="password" value={password} onChange={this.handleChange} placeholder="password"/>
-                    <button>Log In</button>
+                    <button type="submit" >Edit Player Account</button>
                 </form>
             </div>
         )
     }
 }
 
-export default connect(null, ({login}))(LogIn)
+export default connect(null, ({editPlayer}))(EditPlayer)
